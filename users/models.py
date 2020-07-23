@@ -11,6 +11,10 @@ optional = {
 
 class User(AbstractUser):
 
+    class Meta:
+        verbose_name = "User"
+        verbose_name_plural = "Users"
+
     # First Name and Last Name do not cover name patterns
     # around the globe.
     name = models.CharField(_("Name of User"), max_length=255, **optional)
@@ -21,8 +25,16 @@ class Interests(models.Model):
     date_created = models.DateField(default=timezone.now, **optional)
     date_updated = models.DateField(default=timezone.now, **optional)
 
+    class Meta:
+        verbose_name = "Interest"
+        verbose_name_plural = "Interests"
+
 
 class Profile(models.Model):
+
+    class Meta:
+        verbose_name = "Profile"
+        verbose_name_plural = "Profiles"
 
     GENDER_CHOICES = (
         ('M', 'Male'),
