@@ -33,8 +33,6 @@ yarn.lock
 /static
 
 local_settings.py
-**/migrations/*
-!**/migrations/0001_initial.py
 core/local_settings.py
 Pipfile
 

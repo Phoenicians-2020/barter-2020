@@ -4,7 +4,7 @@
 ## Local project setup
 
 1. Create a virtualenv running on Python 3.8
-2. Install PostgreSQL and reate database for the project
+2. Install PostgreSQL and create database for the project
 3. Clone the project
 4. Run the command `pip install -r requirements/local.txt` to install local environment apps
 5. Create a copy of `phoenician_api/local_settings.tpl` and rename it to `local_settings.py`
