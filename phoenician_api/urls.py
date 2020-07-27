@@ -24,7 +24,7 @@ admin.site.index_title = "Barter Site Administration"
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    # path('api/', include('phoenician_api.urls_api'))
+    path('api/', include('phoenician_api.urls_api'))
 ]
 
 if settings.DEBUG:
