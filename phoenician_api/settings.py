@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
 import os
+import django_heroku
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -20,12 +21,19 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = ''
+# SECRET_KEY = '*=kog!z^*oqp02f3vrt-o94j$qoj#c8i*k^pe6no#d_mm9hib&'
+SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
+# DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'phoenician-api.herokuapp.com',
+    '127.0.0.1',
+    '0.0.0.0',
+    'localhost'
+]
 
 
 # Application definition
@@ -79,6 +87,7 @@ WSGI_APPLICATION = 'phoenician_api.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
+db_from_env = dj_database_url.config(conn_max_age=600)
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
