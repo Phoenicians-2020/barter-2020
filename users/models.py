@@ -48,6 +48,7 @@ class Profile(models.Model):
     address = models.CharField(max_length=225, **optional)
     gender = models.CharField(max_length=2, choices=GENDER_CHOICES, **optional)
     interest = models.ManyToManyField(Interests, related_name="profile")
+    contact_number = models.CharField(max_length=50, **optional)
 
     def __str__(self):
         return self.user.name
