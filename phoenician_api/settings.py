@@ -162,6 +162,8 @@ MEDIA_URL = '/images/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'static/images')
 
+django_herokue.settings(locals())
+
 # LOCAL SETTINGS
 f = os.path.join(BASE_DIR, "phoenician_api", "local_settings.py")
 if os.path.exists(f):
