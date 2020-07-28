@@ -7,4 +7,5 @@ urlpatterns = [
     path('users/<int:pk>/', include('users.urls_user')),
     path('users/login/', include('users.urls_login')),
     path('users/logout/', include('users.urls_logout')),
+    path('users/update/<int:pk>/', include('users.urls_user_update')),
 ]
