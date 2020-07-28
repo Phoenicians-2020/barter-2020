@@ -103,3 +103,25 @@ class LogoutAPIView(APIView):
 
         token.delete()
         return Response(status=status.HTTP_200_OK)
+
+
+class UpdateUserAPIView(APIView):
+    authentication_classes = [TokenAuthentication]
+    permission_classes = [IsAuthenticated]
+
+    def get_object(self, pk):
+        try:
+            return Profile.objects.get(pk=pk)
+        except Profile.DoesNotExist:
+            return Response({
+                'error': 'True',
+                'message': 'User profile not found'
+            }, status=status.HTTP_404_NOT_FOUND)
+
+    def put(self, request, pk, format=None):
+        profile = self.get_object(pk)
+        serializer = UserModelSerializer(profile, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
