@@ -10,17 +10,17 @@ from users.models import (
 
 @admin.register(Profile)
 class ProfileAdmin(admin.ModelAdmin):
-    list_display = ["user", "gender", ]
+    list_display = ["id", "user", "gender", ]
     search_fields = ["user__name", "user__email"]
 
 
 @admin.register(Interests)
 class InterestsAdmin(admin.ModelAdmin):
-    list_display = ["name", "date_created", "date_updated"]
+    list_display = ["id", "name", "date_created", "date_updated"]
     search_fields = ["name"]
 
 
 @admin.register(User)
 class UserAdmin(admin.ModelAdmin):
-    list_display = ["username", "name", "is_superuser"]
+    list_display = ["id", "username", "name", "is_superuser"]
     search_fields = ["name"]
