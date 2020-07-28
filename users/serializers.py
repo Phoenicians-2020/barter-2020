@@ -73,17 +73,16 @@ class ProfileSerializer(serializers.ModelSerializer):
 
 
 class AuthCustomTokenSerializer(serializers.Serializer):
-    username = serializers.CharField()
+    email = serializers.CharField()
     password = serializers.CharField()
 
     def validate(self, attrs):
-        username = attrs.get('username')
+        username = attrs.get('email')
         password = attrs.get('password')
 
         if username and password:
             try:
                 validate_email(username)
-
                 user_request = get_object_or_404(User, email=username)
                 username = user_request.username
             except ValidationError as e:
