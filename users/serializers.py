@@ -23,39 +23,25 @@ class UserModelSerializer(serializers.ModelSerializer):
         required=True,
         validators=[UniqueValidator(queryset=User.objects.all())]
     )
-    address = serializers.CharField()
-    gender = serializers.CharField()
-    contact_number = serializers.CharField()
-    about_me = serializers.CharField()
 
     class Meta:
         model = User
         fields = (
             'email',
             'name',
-            'password',
-            'username',
-            'address',
-            'gender',
-            'contact_number',
-            'about_me',
+            'password'
         )
 
     def create(self, validated_data):
         user = User(
             email=validated_data.get('email'),
-            name=validated_data.get('name'),
-            username=validated_data.get('username')
+            name=validated_data.get('name')
         )
         user.set_password(validated_data.get('password'))
         user.save()
 
         user_profile = Profile(
-            user=user,
-            address=self.data.get('address'),
-            gender=self.data.get('gender'),
-            contact_number=self.data.get('contact_number'),
-            about_me=self.data.get('about_me')
+            user=user
         )
         user_profile.save()
 
