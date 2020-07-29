@@ -23,22 +23,27 @@ class UserModelSerializer(serializers.ModelSerializer):
         required=True,
         validators=[UniqueValidator(queryset=User.objects.all())]
     )
+    confirm_password = serializers.CharField()
 
     class Meta:
         model = User
         fields = (
             'email',
             'name',
-            'password'
+            'password',
+            'confirm_password',
         )
 
     def create(self, validated_data):
-        user = User(
-            email=validated_data.get('email'),
-            name=validated_data.get('name')
-        )
-        user.set_password(validated_data.get('password'))
-        user.save()
+        password = validated_data.get('password')
+        confirm_password = self.data.get('confirm_password')
+        if password == confirm_password:
+            user = User(
+                email=validated_data.get('email'),
+                name=validated_data.get('name')
+            )
+            user.set_password(password)
+            user.save()
 
         user_profile = Profile(
             user=user
