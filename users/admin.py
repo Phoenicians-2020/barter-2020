@@ -23,4 +23,5 @@ class InterestsAdmin(admin.ModelAdmin):
 @admin.register(User)
 class UserAdmin(admin.ModelAdmin):
     list_display = ["id", "username", "name", "is_superuser"]
+    readonly_fields = ["password"]
     search_fields = ["name"]
