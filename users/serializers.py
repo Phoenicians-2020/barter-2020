@@ -45,12 +45,12 @@ class UserModelSerializer(serializers.ModelSerializer):
             user.set_password(password)
             user.save()
 
-        user_profile = Profile(
-            user=user
-        )
-        user_profile.save()
+            user_profile = Profile(
+                user=user
+            )
+            user_profile.save()
 
-        return user
+            return user
 
 
 class ProfileSerializer(serializers.ModelSerializer):
