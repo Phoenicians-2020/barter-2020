@@ -8,4 +8,7 @@ urlpatterns = [
     path('users/login/', include('users.urls_login')),
     path('users/logout/', include('users.urls_logout')),
     path('users/update/<int:pk>/', include('users.urls_user_update')),
+    path('users/upload-photo/', include('users.urls_upload_photo')),
+
+    path('products/create/', include('products.urls_create_product'))
 ]
