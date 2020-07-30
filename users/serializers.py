@@ -98,3 +98,11 @@ class AuthCustomTokenSerializer(serializers.Serializer):
 
         attrs['user'] = user
         return attrs
+
+
+class ProfilePhotoSerializer(serializers.ModelSerializer):
+    profile_photo = serializers.ImageField(max_length=None, allow_empty_file=True, required=False)
+
+    class Meta:
+        model = Profile
+        fields = ('profile_photo',)
